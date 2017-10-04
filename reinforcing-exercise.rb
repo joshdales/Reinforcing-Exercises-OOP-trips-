@@ -33,9 +33,12 @@ class Trip
   def self.start
     puts "Begin trip"
     @@destinations.each_with_index do |stop, i|
-      puts "Travelled from #{stop.name} to #{stop.name}."
+      if @@destinations[i+1] == nil
+        puts "Ended Trip"
+      else
+      puts "Travelled from #{stop.name} to #{@@destinations[i+1].name}."
     end
-    puts "Ended Trip"
+    end
   end
 end
 
@@ -45,6 +48,5 @@ trip.add_new_stop("Montreal")
 trip.add_new_stop("Quebec City")
 trip.add_new_stop("Halifax")
 trip.add_new_stop("St. John's")
-puts Trip.stops.inspect
 
 Trip.start
